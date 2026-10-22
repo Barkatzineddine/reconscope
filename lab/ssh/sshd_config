@@ -1,0 +1,12 @@
+# Deliberately offers a few deprecated algorithms alongside the modern ones, so reconscope
+# reports them. Logins are disabled; this host is for enumeration only.
+Port 22
+PasswordAuthentication no
+PermitRootLogin no
+
+# The '+' adds these to the default set, so weak and strong are both offered.
+KexAlgorithms +diffie-hellman-group14-sha1
+Ciphers +aes128-cbc,3des-cbc
+MACs +hmac-sha1
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa

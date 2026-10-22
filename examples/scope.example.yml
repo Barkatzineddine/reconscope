@@ -1,0 +1,30 @@
+# reconscope scope file.
+#
+# This file is the authorization boundary. reconscope only ever contacts the hosts and ports
+# listed under `allow`, minus anything under `deny`. Edit it to match the engagement you have
+# written permission for, and nothing else.
+
+# A free-text note describing your authority to run this scan: the client, the engagement, the
+# ticket or the written permission. reconscope refuses to run if this is empty.
+authorization: "Lab engagement DEMO-001 — reconscope docker-compose test lab (self-owned)."
+
+allow:
+  hosts:
+    - 127.0.0.1          # a single address
+    - 10.13.37.0/24      # a whole /24 (list targets explicitly or let the CLI expand it)
+    - scanme.example.test # a host name (authorized by name, not by whatever it resolves to)
+  ports:
+    - 22
+    - 80
+    - 443
+    - 445
+    - 53
+    - 8080
+
+deny:
+  hosts:
+    - 10.13.37.1         # the gateway is in the network above but must never be touched
+
+rate:
+  max_concurrency: 50     # at most this many connections open at once
+  requests_per_second: 20 # and at most this many new connections per second

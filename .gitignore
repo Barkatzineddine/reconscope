@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.coverage
+coverage.xml
+junit.xml
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Scan output describes real networks: keep it out of git.
+reports/
+*.report.json
+*.report.html

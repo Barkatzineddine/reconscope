@@ -1,0 +1,5 @@
+lab.test:53 {
+    file /db.lab.test
+    log
+    errors
+}

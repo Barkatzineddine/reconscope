@@ -1,0 +1,5 @@
+# The scope gate, the protocol probes and the pipeline need the owner's review.
+*                               @Barkatzineddine
+/src/reconscope/scope.py        @Barkatzineddine
+/src/reconscope/enum/           @Barkatzineddine
+/.github/                       @Barkatzineddine

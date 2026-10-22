@@ -1,0 +1,16 @@
+$ORIGIN lab.test.
+$TTL 3600
+@       IN  SOA ns.lab.test. admin.lab.test. (
+                2026102201 ; serial
+                7200       ; refresh
+                3600       ; retry
+                1209600    ; expire
+                3600 )     ; minimum
+@       IN  NS   ns.lab.test.
+ns      IN  A    10.13.37.40
+web     IN  A    10.13.37.10
+ssh     IN  A    10.13.37.20
+smb     IN  A    10.13.37.30
+@       IN  MX   10 mail.lab.test.
+mail    IN  A    10.13.37.10
+@       IN  TXT  "reconscope lab zone"

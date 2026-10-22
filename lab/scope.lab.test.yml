@@ -1,0 +1,21 @@
+# Scope for the docker-compose lab. The lab network is self-owned and isolated, so this is a
+# legitimate authorized target. reconscope will not touch anything outside 10.13.37.0/24.
+authorization: "reconscope CI lab — self-owned docker-compose network, no external targets."
+
+allow:
+  hosts:
+    - 10.13.37.0/24
+  ports:
+    - 22
+    - 53
+    - 80
+    - 443
+    - 445
+
+deny:
+  hosts:
+    - 10.13.37.1 # the docker bridge gateway is never a target
+
+rate:
+  max_concurrency: 50
+  requests_per_second: 100

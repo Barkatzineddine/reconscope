@@ -1,0 +1,39 @@
+# A small, self-contained network of deliberately imperfect services for reconscope to
+# enumerate. Everything runs on an isolated bridge network with fixed addresses, so the scope
+# file and the assertions can name exact hosts. Nothing here is exposed to the host.
+services:
+  web:
+    build: ./web
+    networks:
+      lab:
+        ipv4_address: 10.13.37.10
+
+  ssh:
+    build: ./ssh
+    networks:
+      lab:
+        ipv4_address: 10.13.37.20
+
+  smb:
+    build: ./smb
+    networks:
+      lab:
+        ipv4_address: 10.13.37.30
+
+  dns:
+    # CoreDNS serves the lab.test zone. Pinned by digest below.
+    image: coredns/coredns:1.11.3
+    command: -conf /Corefile
+    volumes:
+      - ./dns/Corefile:/Corefile:ro
+      - ./dns/db.lab.test:/db.lab.test:ro
+    networks:
+      lab:
+        ipv4_address: 10.13.37.40
+
+networks:
+  lab:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.13.37.0/24
