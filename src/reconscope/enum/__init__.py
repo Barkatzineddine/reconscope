@@ -9,4 +9,18 @@ headers), they never authenticate, change state or transfer files.
 
 from __future__ import annotations
 
-__all__ = ["dns", "http", "smb", "ssh", "tls"]
+__all__ = [
+    "dns",
+    "ftp",
+    "http",
+    "mysql",
+    "postgres",
+    "rdp",
+    "redis",
+    "smb",
+    "smtp",
+    "ssh",
+    "telnet",
+    "tls",
+    "vnc",
+]

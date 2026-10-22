@@ -16,6 +16,7 @@ WEB = "10.13.37.10"
 SSH = "10.13.37.20"
 SMB = "10.13.37.30"
 DNS = "10.13.37.40"
+REDIS = "10.13.37.50"
 
 
 def _host(report: dict[str, Any], address: str) -> dict[str, Any]:
@@ -65,6 +66,12 @@ def main(path: str) -> int:
 
     _port(_host(report, DNS), 53)
     checks.append("dns: port 53 open")
+
+    redis = _port(_host(report, REDIS), 6379)
+    assert redis["service"]["name"] == "redis", "port 6379 is not identified as redis"
+    assert redis["service"]["details"].get("detected_as") == "redis", "redis not detected by behaviour"
+    assert any("Unauthenticated Redis" in t for t in _finding_titles(redis)), "unauth Redis not flagged"
+    checks.append("redis: unauthenticated access detected and flagged")
 
     print("Lab report checks passed:")
     for line in checks:

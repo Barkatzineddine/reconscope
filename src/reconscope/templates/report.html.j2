@@ -37,6 +37,7 @@
 {% for host in report.hosts %}
 <section class="host">
   <h2>{{ host.host }}{% if host.hostname %} <span class="name">({{ host.hostname }})</span>{% endif %}</h2>
+  {% if host.discovered_via %}<p class="meta">discovered via {{ host.discovered_via }}</p>{% endif %}
   {% if host.reverse_dns %}<p class="meta">PTR: {{ host.reverse_dns }}</p>{% endif %}
 
   {% if host.dns %}

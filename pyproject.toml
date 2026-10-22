@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reconscope"
-version = "1.0.0"
+version = "2.0.0"
 description = "Scope-bounded network and service enumeration for authorized security assessments"
 readme = "README.md"
 license = "MIT"
@@ -36,7 +36,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF", "PL", "PTH", "C4", "RET"]
-ignore = ["PLR2004", "PLR0911", "PLR0912", "PLR0913", "PLR0915"]
+ignore = ["PLR2004", "PLR0911", "PLR0912", "PLR0913", "PLR0915", "PLR0917"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101", "PLR2004", "S603", "S607", "S104", "S106", "SIM105", "PLC0415", "E501", "SLF001", "S505"]

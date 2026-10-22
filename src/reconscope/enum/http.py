@@ -102,6 +102,8 @@ async def probe(
     title = _extract_title(body)
     if title:
         details["title"] = title
+    if "location" in headers:
+        details["location"] = headers["location"]
     present = [h for h in _SECURITY_HEADERS if h in headers]
     details["security_headers_present"] = present
     service.details = details

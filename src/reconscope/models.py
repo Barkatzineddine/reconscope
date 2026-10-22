@@ -73,6 +73,7 @@ class HostResult:
     host: str
     hostname: str | None = None
     reverse_dns: str | None = None
+    discovered_via: str | None = None
     dns: dict[str, list[str]] = field(default_factory=dict)
     ports: list[PortResult] = field(default_factory=list)
     findings: list[Finding] = field(default_factory=list)

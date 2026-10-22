@@ -21,7 +21,7 @@ services:
         ipv4_address: 10.13.37.30
 
   dns:
-    # CoreDNS serves the lab.test zone. Pinned by digest below.
+    # CoreDNS serves the lab.test zone.
     image: coredns/coredns:1.11.3
     command: -conf /Corefile
     volumes:
@@ -30,6 +30,14 @@ services:
     networks:
       lab:
         ipv4_address: 10.13.37.40
+
+  redis:
+    # Redis with no password set: reachable with no authentication, which reconscope flags.
+    image: redis:7.4-alpine
+    command: ["redis-server", "--protected-mode", "no"]
+    networks:
+      lab:
+        ipv4_address: 10.13.37.50
 
 networks:
   lab:

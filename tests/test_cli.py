@@ -102,7 +102,7 @@ def test_version_exits_zero(capsys: pytest.CaptureFixture[str]) -> None:
     with pytest.raises(SystemExit) as exc:
         cli.main(["--version"])
     assert exc.value.code == 0
-    assert "reconscope 1.0.0" in capsys.readouterr().out
+    assert "reconscope 2.0.0" in capsys.readouterr().out
 
 
 def test_no_subcommand_errors() -> None:

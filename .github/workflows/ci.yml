@@ -100,7 +100,7 @@ jobs:
           docker compose -p reconscopelab up -d --build
       - name: Wait for the services to accept connections
         run: |
-          for addr in 10.13.37.10:80 10.13.37.10:443 10.13.37.20:22 10.13.37.30:445 10.13.37.40:53; do
+          for addr in 10.13.37.10:80 10.13.37.10:443 10.13.37.20:22 10.13.37.30:445 10.13.37.40:53 10.13.37.50:6379; do
             host=${addr%%:*}; port=${addr##*:}
             for i in $(seq 1 30); do
               if docker run --rm --network reconscopelab_lab busybox:1.37.0 \
@@ -117,7 +117,7 @@ jobs:
               python -m pip install --no-deps --no-build-isolation -e . &&
               reconscope scan --scope lab/scope.lab.test.yml \
                 --json report.json --html report.html \
-                10.13.37.10 10.13.37.20 10.13.37.30 10.13.37.40'
+                10.13.37.10 10.13.37.20 10.13.37.30 10.13.37.40 10.13.37.50'
       - name: Check the report found the planted issues
         run: python3 lab/check_report.py report.json
       - name: Upload the sample report
