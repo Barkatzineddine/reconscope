@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import sys
+from pathlib import Path
 from typing import Any
 
 WEB = "10.13.37.10"
@@ -36,7 +37,7 @@ def _finding_titles(port: dict[str, Any]) -> set[str]:
 
 
 def main(path: str) -> int:
-    report = json.loads(open(path, encoding="utf-8").read())
+    report = json.loads(Path(path).read_text(encoding="utf-8"))
     checks: list[str] = []
 
     web = _host(report, WEB)
